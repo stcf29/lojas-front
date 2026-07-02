@@ -1,0 +1,30 @@
+.footer {
+  background: #0f172a;
+  color: white;
+  padding: 40px 20px;
+  margin-top: 50px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+.section a {
+  color: white;
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+
+.section a:hover {
+  text-decoration: underline;
+}

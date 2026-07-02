@@ -1,0 +1,51 @@
+
+<div class="container">
+
+  <div class="form-card">
+
+    <h2>Fale Conosco</h2>
+
+    <form [formGroup]="formulario">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="nome">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>E-mail</mat-label>
+        <input matInput formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Telefone</mat-label>
+        <input matInput formControlName="telefone" type="tel" (keypress)="somenteNumeros($event)">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Assunto</mat-label>
+        <input matInput formControlName="assunto">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Mensagem</mat-label>
+        <textarea matInput rows="5" formControlName="mensagem">
+        </textarea>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        (click)="enviar()">
+
+        Enviar
+
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
