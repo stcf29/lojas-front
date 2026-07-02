@@ -5,12 +5,11 @@
     [circular]="true"
     [autoplayInterval]="3000">
 
-    <ng-template pTemplate="item" let-banner>
-
+    <ng-template #item let-banner>
         <img
             [src]="banner.imagem"
-            class="banner">
-
+            class="banner"
+            alt="Banner">
     </ng-template>
 
 </p-carousel>

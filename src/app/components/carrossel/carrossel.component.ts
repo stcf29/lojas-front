@@ -16,5 +16,8 @@ banners = [
     { imagem: 'banner3.jpg'}
   ];
 
+constructor() {
+  console.log('Carrossel criado');
+}
 
 }
