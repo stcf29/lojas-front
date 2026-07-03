@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule} from '@angular
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { LojaService } from '../../services/loja.service';
 
 @Component({
   selector: 'app-fale-conosco',
@@ -24,7 +25,7 @@ export class FaleConoscoComponent {
 
   formulario: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private service: LojaService) {
 
     this.formulario = this.fb.group({
       nome: ['', Validators.required],
@@ -38,7 +39,20 @@ export class FaleConoscoComponent {
   public enviar() {
     if (this.formulario.valid) {
       console.log(this.formulario.value);
+      this.service.enviarFC(this.formulario.value).subscribe({
+        next: () => {
+          alert('Mensagem enviada com sucesso!');
+          this.formulario.reset();
+        },
+        error: (erro) => {
+          console.error(erro);
+          alert('Erro ao enviar a mensagem.');
+        }
+      });
+
     }
+
+
   }
 
   public somenteNumeros(event: KeyboardEvent): void {
