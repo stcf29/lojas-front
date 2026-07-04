@@ -36,3 +36,16 @@
 .right button {
   color: inherit;
 }
+
+.vero {
+  padding-left: 90px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.centro {
+  color: orange;
+  font-weight: bold;
+  font-size: 18px;
+}

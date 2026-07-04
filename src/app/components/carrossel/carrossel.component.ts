@@ -10,14 +10,13 @@ import { CarouselModule } from 'primeng/carousel';
 })
 export class CarrosselComponent {
 
-banners = [
-    { imagem: 'banner1.jpg'},
-    { imagem: 'banner2.jpg'},
-    { imagem: 'banner3.jpg'}
-  ];
+  readonly banners = [
+  { imagem: 'banner1.jpg' },
+  { imagem: 'banner2.jpg' },
+  { imagem: 'banner3.jpg' }
+];
 
 constructor() {
-  console.log('Carrossel criado');
 }
 
 }
