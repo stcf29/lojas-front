@@ -21,6 +21,7 @@ import { MessageService } from 'primeng/api';
     MatCardModule,
     ToastModule,
   ],
+  providers: [MessageService],
   templateUrl: './fale-conosco.component.html',
   styleUrl: './fale-conosco.component.css',
 })
@@ -43,7 +44,6 @@ export class FaleConoscoComponent {
 
   public enviar() {
     if (this.formulario.valid) {
-      console.log(this.formulario.value);
       this.service.enviarFC(this.formulario.value).subscribe({
         next: () => {
           this.messageService.add({
