@@ -1,16 +1,20 @@
-<mat-toolbar color="primary" class="header">
+<header class="header">
 
-  <!-- ESQUERDA -->
-  <div class="left">
-      <span class="vero">VERO</span>
-      <span class="centro">CENTRO</span>
+  <div class="container">
+
+    <a routerLink="/" class="logo">
+      <span class="logo-vero">vero</span><span class="logo-centro">centro</span>
+    </a>
+
+    <div class="search-container">
+      <input type="search" [(ngModel)]="search" (keyup.enter)="buscar()" placeholder="Buscar loja ou categoria...">
+
+    </div>
+    <mat-icon (click)="buscar()">
+      search
+    </mat-icon>
+    <a routerLink=""> Início</a>
+
   </div>
 
-  <!-- DIREITA -->
-  <div class="right">
-    <button mat-button>Início</button>
-    <button mat-button>Categorias</button>
-    <button mat-button>Lojas</button>
-  </div>
-
-</mat-toolbar>
+</header>

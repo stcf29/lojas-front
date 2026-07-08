@@ -1,7 +1,12 @@
 .banner{
     width:100%;
-    height:450px;
+    height:250px;
     object-fit:cover;
     border-radius:12px;
     margin-top: 11px;
+}
+
+.carrossel{
+    max-width:900px;
+    margin:auto;
 }

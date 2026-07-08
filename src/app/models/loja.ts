@@ -14,4 +14,5 @@ export interface Loja {
   categoria: string;
   latitude: number;
   longitude: number;
+  destaque: boolean;
 }

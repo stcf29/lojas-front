@@ -1,1 +1,160 @@
+.hero {
+  min-height: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  background:
+    radial-gradient(circle at left, rgba(255, 183, 77, .45), transparent 35%),
+    radial-gradient(circle at right, rgba(255, 183, 77, .45), transparent 35%),
+    #ffffff;
+}
 
+.hero-content {
+  max-width: 850px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 24px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 35px;
+}
+
+.hero-button {
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+  color: white;
+  border: none;
+  border-radius: 40px;
+  padding: 16px 38px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .3s ease;
+  box-shadow: 0 8px 20px rgba(245, 124, 0, .35);
+}
+
+.hero-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(245, 124, 0, .45);
+}
+
+.hero-button:active {
+  transform: scale(.98);
+}
+
+.vitrine {
+  margin-top: 40px;
+}
+
+.vitrine h2 {
+  color: #0B2B74;
+  margin-bottom: 20px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.card-loja {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .12);
+  transition: .25s;
+}
+
+.card-loja:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .18);
+}
+
+.card-loja img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 16px;
+}
+
+.card-body h3 {
+  margin: 0;
+  color: #0B2B74;
+}
+
+.categoria {
+  display: block;
+  margin-top: 4px;
+  color: #777;
+}
+
+.acoes {
+  display: flex;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.btn-vitrine {
+  background: #0B2B74;
+  color: white;
+}
+
+.btn-zap {
+  background: #28C840;
+  color: white;
+}
+
+.btn-rota {
+  background: #ff6b00;
+  color: white;
+}
+
+.acoes button {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.lista {
+  margin-top: 50px;
+}
+
+.item-lista {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border: 1px solid #E6E6E6;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.item-lista h3 {
+  margin: 0;
+  color: #0B2B74;
+}
+
+.item-lista span {
+  color: #666;
+}
+
+.home-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 24px;
+}

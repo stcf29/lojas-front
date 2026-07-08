@@ -6,7 +6,8 @@ import { CarouselModule } from 'primeng/carousel';
   standalone: true,
   imports: [CarouselModule],
   templateUrl: './carrossel.component.html',
-  styleUrl: './carrossel.component.css'
+  styleUrl: './carrossel.component.css',
+  host: { ngSkipHydration: 'true' }
 })
 export class CarrosselComponent {
 
