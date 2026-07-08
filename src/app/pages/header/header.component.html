@@ -7,14 +7,9 @@
     </a>
 
     <div class="search-container">
-      <input type="search" [(ngModel)]="search" (keyup.enter)="buscar()" placeholder="Buscar loja ou categoria...">
-
+      <input type="search" [(ngModel)]="search" (input)="onSearchChange()" placeholder="Buscar loja ou categoria...">
     </div>
-    <mat-icon (click)="buscar()">
-      search
-    </mat-icon>
-    <a routerLink=""> Início</a>
+    <a routerLink="/"> Início</a>
 
   </div>
-
 </header>

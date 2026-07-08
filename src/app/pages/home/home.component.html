@@ -61,7 +61,6 @@
                     -
                     {{ loja.bairro }}
                 </span>
-
             </div>
             <button class="btn-rota">
                 📍 Como chegar
@@ -69,6 +68,12 @@
         </div>
     }
 </section>
+<mat-paginator
+    [length]="totalItens"
+    [pageSize]="itensPorPagina"
+    [pageSizeOptions]="[5]"
+    (page)="mudarPagina($event)">
+</mat-paginator>
 </div>
 
 

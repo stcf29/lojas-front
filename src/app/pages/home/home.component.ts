@@ -7,11 +7,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { Loja } from '../../models/loja';
 import { LojaService } from '../../services/loja.service';
 import { PesquisaService } from '../../services/pesquisa.service';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CarrosselComponent, MatCardModule, MatButtonModule, MatIconModule],
+  imports: [CarrosselComponent, MatCardModule, MatButtonModule, MatIconModule, MatPaginatorModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
@@ -22,13 +23,12 @@ export class HomeComponent {
   ) {}
 
   termoPesquisa = '';
-
   categoriaSelecionada = '';
-
-  //bannerPrincipal!: Loja;
-
+  todasLojas: Loja[] = [];
   lojas: Loja[] = [];
-
+  paginaAtual = 0;
+  itensPorPagina = 5;
+  totalItens = 0;
   vitrines: Loja[] = [];
 
   categorias = [
@@ -41,26 +41,35 @@ export class HomeComponent {
   ];
 
   ngOnInit() {
+    this.pesquisaService.pesquisa$.subscribe((texto) => {
+      this.termoPesquisa = texto;
+      this.pesquisar(this.termoPesquisa);
+    });
+  }
 
-    this.pesquisaService.pesquisa$
-        .subscribe(texto => {
-            this.termoPesquisa = texto
-            this.pesquisar(this.termoPesquisa);
-        });
+  pesquisar(texto: string) {
+    this.lojaService.pesquisar(texto).subscribe({
+      next: (resultado) => {
+        this.todasLojas = resultado;
+        this.totalItens = resultado.length;
+        this.atualizarPagina();
+        this.vitrines = resultado.filter((x) => x.destaque);
+        this.vitrines = resultado.filter((x) => x.destaque);
+      },
+      error: (erro) => {
+        console.error(erro);
+      },
+    });
+  }
 
-}
+  atualizarPagina() {
+    const inicio = this.paginaAtual * this.itensPorPagina;
+    const fim = inicio + this.itensPorPagina;
+    this.lojas = this.todasLojas.slice(inicio, fim);
+  }
 
-  pesquisar(texto:string) {
-    this.lojaService
-      .pesquisar(texto)
-      .subscribe({
-        next: (resultado) => {
-          this.lojas = resultado;
-          this.vitrines = resultado.filter((x) => x.destaque);
-        },
-        error:(erro)=>{
-            console.error(erro);
-            }
-      });
+  mudarPagina(event: PageEvent) {
+    this.paginaAtual = event.pageIndex;
+    this.atualizarPagina();
   }
 }
