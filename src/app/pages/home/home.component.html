@@ -2,51 +2,27 @@
 
 <div class="home-container">
 <section class="vitrine">
-
     <h2>Vitrines em destaque</h2>
-
     <div class="cards">
-
         @for (loja of vitrines; track loja.id) {
-
             <div class="card-loja">
-
-                <!-- <img
-                    [src]="loja.imagem"
-                    [alt]="loja.nome"> -->
-
+                <img
+                    src="vivaz.png"
+                    alt="Loja">
                 <div class="card-body">
-
                     <h3>{{ loja.nome }}</h3>
-
                     <span class="categoria">
                         {{ loja.categoria }}
                     </span>
-
                     <div class="acoes">
-
-                        <button class="btn-vitrine">
-                            Vitrine
-                        </button>
-
-                        <button class="btn-zap">
-                            Zap
-                        </button>
-
-                        <button class="btn-rota">
-                            Rota
-                        </button>
-
+                        <button class="btn-vitrine"> Vitrine </button>
+                        <button class="btn-zap"> Whatsapp </button>
+                        <button class="btn-rota"> Rota </button>
                     </div>
-
                 </div>
-
             </div>
-
         }
-
     </div>
-
 </section>
 
 <section class="lista">
@@ -62,9 +38,7 @@
                     {{ loja.bairro }}
                 </span>
             </div>
-            <button class="btn-rota">
-                📍 Como chegar
-            </button>
+            <button class="btn-rota">📍 Como chegar</button>
         </div>
     }
 </section>

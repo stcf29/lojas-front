@@ -12,7 +12,13 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CarrosselComponent, MatCardModule, MatButtonModule, MatIconModule, MatPaginatorModule],
+  imports: [
+    CarrosselComponent,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatPaginatorModule,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
@@ -53,8 +59,10 @@ export class HomeComponent {
         this.todasLojas = resultado;
         this.totalItens = resultado.length;
         this.atualizarPagina();
-        this.vitrines = resultado.filter((x) => x.destaque);
-        this.vitrines = resultado.filter((x) => x.destaque);
+        this.vitrines = resultado.filter((loja) => loja.destaque);
+        this.todasLojas = resultado.filter((loja) => !loja.destaque);
+        this.totalItens = this.todasLojas.length;
+        this.atualizarPagina();
       },
       error: (erro) => {
         console.error(erro);
