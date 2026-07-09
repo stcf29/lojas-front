@@ -36,14 +36,21 @@ export class HomeComponent {
   itensPorPagina = 5;
   totalItens = 0;
   vitrines: Loja[] = [];
+  resultadoOriginal: Loja[] = [];
 
   categorias = [
-    'Todas',
-    'Moda',
-    'Calçados',
-    'Eletrônicos',
-    'Beleza',
-    'Variedades',
+    { valor: '', descricao: 'Todas' },
+    { valor: 'ELETRONICOS', descricao: 'Eletrônicos' },
+    { valor: 'ROUPAS', descricao: 'Roupas' },
+    { valor: 'MODA_INTIMA', descricao: 'Moda Íntima' },
+    { valor: 'CALCADOS', descricao: 'Calçados' },
+    { valor: 'JOALHERIA', descricao: 'Joalheria' },
+    { valor: 'PAPELARIA', descricao: 'Papelaria' },
+    { valor: 'FARMACIA', descricao: 'Farmácia' },
+    { valor: 'INFORMATICA', descricao: 'Informática' },
+    { valor: 'COSMETICOS', descricao: 'Cosméticos' },
+    { valor: 'UTILIDADES', descricao: 'Utilidades' },
+    { valor: 'ALIMENTACAO', descricao: 'Alimentação' },
   ];
 
   ngOnInit() {
@@ -59,10 +66,8 @@ export class HomeComponent {
         this.todasLojas = resultado;
         this.totalItens = resultado.length;
         this.atualizarPagina();
-        this.vitrines = resultado.filter((loja) => loja.destaque);
-        this.todasLojas = resultado.filter((loja) => !loja.destaque);
-        this.totalItens = this.todasLojas.length;
-        this.atualizarPagina();
+        this.resultadoOriginal = resultado;
+        this.aplicarFiltros();
       },
       error: (erro) => {
         console.error(erro);
@@ -78,6 +83,32 @@ export class HomeComponent {
 
   mudarPagina(event: PageEvent) {
     this.paginaAtual = event.pageIndex;
+    this.atualizarPagina();
+  }
+
+  selecionarCategoria(categoria: string) {
+    this.categoriaSelecionada = categoria;
+    this.aplicarFiltros();
+  }
+
+  aplicarFiltros() {
+    let resultado = [...this.resultadoOriginal];
+    if (this.termoPesquisa) {
+      resultado = resultado.filter((loja) =>
+        loja.nome.toLowerCase().includes(this.termoPesquisa.toLowerCase()),
+      );
+    }
+
+    if (this.categoriaSelecionada) {
+      resultado = resultado.filter(
+        (loja) => loja.categoria === this.categoriaSelecionada,
+      );
+    }
+
+    this.vitrines = resultado.filter((x) => x.destaque);
+    this.todasLojas = resultado.filter((x) => !x.destaque);
+    this.totalItens = this.todasLojas.length;
+    this.paginaAtual = 0;
     this.atualizarPagina();
   }
 }
