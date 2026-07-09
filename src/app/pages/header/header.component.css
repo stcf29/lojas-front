@@ -8,45 +8,31 @@
 }
 
 .container {
-
     max-width: 1200px;
-
     margin: auto;
-
     display: flex;
-
     align-items: center;
-
     gap: 20px;
-
     padding: 12px 20px;
 }
 
 .logo {
-
     text-decoration: none;
-
     font-size: 34px;
-
     font-weight: 800;
-
     letter-spacing: -.5px;
-
     white-space: nowrap;
 }
 
 .logo-vero {
-
     color: white;
 }
 
 .logo-centro {
-
     color: #ff6b00;
 }
 
 .search-container {
-
     flex: 1;
 }
 
