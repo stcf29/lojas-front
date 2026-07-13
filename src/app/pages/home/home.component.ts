@@ -63,6 +63,7 @@ export class HomeComponent {
   pesquisar(texto: string) {
     this.lojaService.pesquisar(texto).subscribe({
       next: (resultado) => {
+        console.log(resultado);
         this.todasLojas = resultado;
         this.totalItens = resultado.length;
         this.atualizarPagina();
@@ -93,11 +94,6 @@ export class HomeComponent {
 
   aplicarFiltros() {
     let resultado = [...this.resultadoOriginal];
-    if (this.termoPesquisa) {
-      resultado = resultado.filter((loja) =>
-        loja.nome.toLowerCase().includes(this.termoPesquisa.toLowerCase()),
-      );
-    }
 
     if (this.categoriaSelecionada) {
       resultado = resultado.filter(
