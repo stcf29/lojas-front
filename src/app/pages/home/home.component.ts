@@ -8,6 +8,7 @@ import { Loja } from '../../models/loja';
 import { LojaService } from '../../services/loja.service';
 import { PesquisaService } from '../../services/pesquisa.service';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { distinctUntilChanged } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -54,19 +55,46 @@ export class HomeComponent {
   ];
 
   ngOnInit() {
-    this.pesquisaService.pesquisa$.subscribe((texto) => {
-      this.termoPesquisa = texto;
-      this.pesquisar(this.termoPesquisa);
+    this.pesquisaService.pesquisa$
+      .pipe(distinctUntilChanged())
+      .subscribe((texto) => {
+        this.termoPesquisa = texto;
+
+        if (texto.trim()) {
+          this.pesquisar(texto);
+        } else {
+          this.carregarLojas();
+        }
+      });
+
+    this.carregarLojas();
+  }
+
+  carregarLojas() {
+    this.lojaService.listarTodas().subscribe((lojas) => {
+      this.resultadoOriginal = lojas;
+      this.aplicarRegraInicial();
     });
+  }
+
+  private aplicarRegraInicial() {
+    this.vitrines = this.resultadoOriginal.filter(
+      (loja) => loja.plano === 'PREMIUM',
+    );
+
+    this.todasLojas = this.resultadoOriginal.filter(
+      (loja) => loja.plano === 'BASICO' || loja.plano === 'GRATUITO',
+    );
+
+    this.totalItens = this.todasLojas.length;
+    this.paginaAtual = 0;
+    this.atualizarPagina();
   }
 
   pesquisar(texto: string) {
     this.lojaService.pesquisar(texto).subscribe({
       next: (resultado) => {
         console.log(resultado);
-        this.todasLojas = resultado;
-        this.totalItens = resultado.length;
-        this.atualizarPagina();
         this.resultadoOriginal = resultado;
         this.aplicarFiltros();
       },
@@ -101,8 +129,14 @@ export class HomeComponent {
       );
     }
 
-    this.vitrines = resultado.filter((x) => x.destaque);
-    this.todasLojas = resultado.filter((x) => !x.destaque);
+    this.vitrines = resultado.filter(
+      (loja) => loja.plano === 'PREMIUM' || loja.plano === 'PRO',
+    );
+
+    this.todasLojas = resultado.filter(
+      (loja) => loja.plano === 'BASICO' || loja.plano === 'GRATUITO',
+    );
+
     this.totalItens = this.todasLojas.length;
     this.paginaAtual = 0;
     this.atualizarPagina();

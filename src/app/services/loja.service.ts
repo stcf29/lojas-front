@@ -16,6 +16,12 @@ export class LojaService {
     return this.http.post(`${this.API}/lojas/pesquisarLojas`, { nome });
   }
 
+  listarTodas(): Observable<Loja[]> {
+  return this.http.get<Loja[]>(
+    `${this.API}/lojas/listar`
+  );
+}
+
   pesquisar(nome: string) {
     return this.http.post<Loja[]>(
       this.API + '/lojas/pesquisarLojas',

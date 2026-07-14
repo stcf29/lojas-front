@@ -12,6 +12,7 @@ export interface Loja {
   email: string
   instagram: string;
   categoria: string;
+  plano: string;
   latitude: number;
   longitude: number;
   destaque: boolean;
