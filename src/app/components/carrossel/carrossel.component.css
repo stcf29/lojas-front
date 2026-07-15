@@ -10,3 +10,16 @@
     max-width:900px;
     margin:auto;
 }
+:host{
+
+    display:block;
+
+    width:100%;
+
+}
+
+p-carousel{
+
+    width:100%;
+
+}
