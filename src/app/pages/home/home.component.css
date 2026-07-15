@@ -210,9 +210,12 @@
 }
 
 .home-layout{
-    display:flex;
-    gap:30px;
-    align-items:flex-start;
+    max-width: 1400px;
+    margin: 30px auto;
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    padding: 0 32px;
 }
 
 .conteudo-home{
@@ -288,7 +291,6 @@
     }
 }
 
-
 @media (max-width:480px){
     .card-body{
         padding:12px;
@@ -316,6 +318,5 @@
 
     .cards{
     grid-template-columns:1fr;
-}
-
+    }
 }
