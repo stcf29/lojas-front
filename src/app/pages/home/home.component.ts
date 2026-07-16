@@ -141,4 +141,18 @@ export class HomeComponent {
     this.paginaAtual = 0;
     this.atualizarPagina();
   }
+
+  abrirMapa(loja: Loja) {
+    const partes = [
+      loja.endereco,
+      loja.numero,
+      loja.bairro,
+      'Belém',
+      'PA',
+    ].filter((parte) => parte && parte.trim() !== '');
+
+    const endereco = partes.join(', ');
+    const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(endereco)}`;
+    window.open(url, '_blank');
+  }
 }
