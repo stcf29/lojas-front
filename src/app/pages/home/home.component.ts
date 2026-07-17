@@ -144,6 +144,7 @@ export class HomeComponent {
 
   abrirMapa(loja: Loja) {
     const partes = [
+      loja.nome,
       loja.endereco,
       loja.numero,
       loja.bairro,
@@ -155,4 +156,12 @@ export class HomeComponent {
     const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(endereco)}`;
     window.open(url, '_blank');
   }
+
+abrirWhatsapp(loja: Loja) {
+  if (!loja.whatsapp) return;
+  const numero = loja.whatsapp.replace(/\D/g, '');
+  const mensagem =`Olá! Encontrei a loja ${loja.nome} no VeroCentro e gostaria de obter mais informações.`;
+  const url =`https://wa.me/55${numero}?text=${encodeURIComponent(mensagem)}`;
+  window.open(url, '_blank');
+}
 }
