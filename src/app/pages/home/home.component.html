@@ -22,7 +22,18 @@
                             src="vivaz.png"
                             [alt]="loja.nome">
                         <div class="card-body">
-                            <h3>{{ loja.nome }}</h3>
+                              <h3>
+                                {{ loja.nome }}
+
+                                @if (loja.plano === 'PREMIUM') {
+                                <span class="plano premium">👑 Premium</span>
+                                }
+
+                                @if (loja.plano === 'PRO') {
+                                <span class="plano pro">⭐ Pro</span>
+                                }
+
+                              </h3>
                             <span class="categoria">
                                 {{ loja.categoria }}
                             </span>
@@ -42,7 +53,12 @@
             @for (loja of lojas; track loja.id) {
                 <div class="item-lista">
                     <div>
-                        <h3>{{ loja.nome }}</h3>
+                        <h3>{{ loja.nome }}
+                          @if (loja.plano === 'BASICO') {
+                          <span class="plano basico">✔ Básico</span>
+                          }
+                        </h3>
+
                         <span>
                             {{ loja.endereco }},
                             {{ loja.numero }}

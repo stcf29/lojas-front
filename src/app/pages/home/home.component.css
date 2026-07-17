@@ -320,3 +320,27 @@
     grid-template-columns:1fr;
     }
 }
+
+.plano{
+    display:inline-block;
+    margin-left:10px;
+    padding:3px 8px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:700;
+    color:white;
+    vertical-align:middle;
+}
+
+.plano.premium{
+    background:#d4af37;
+}
+
+.plano.pro{
+    background:#0b2b74;
+}
+
+.plano.basico{
+    background:#3f51b5;
+    color: #fff !important;
+}

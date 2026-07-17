@@ -9,6 +9,7 @@ import { LojaService } from '../../services/loja.service';
 import { PesquisaService } from '../../services/pesquisa.service';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { distinctUntilChanged } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +20,7 @@ import { distinctUntilChanged } from 'rxjs';
     MatButtonModule,
     MatIconModule,
     MatPaginatorModule,
+    CommonModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
