@@ -19,7 +19,7 @@
                 @for (loja of vitrines; track loja.id) {
                     <div class="card-loja">
                         <img
-                            src="vivaz.png"
+                            [src]="getImagem(loja)"
                             [alt]="loja.nome">
                         <div class="card-body">
                               <h3>
