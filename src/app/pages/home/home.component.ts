@@ -10,6 +10,7 @@ import { PesquisaService } from '../../services/pesquisa.service';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { distinctUntilChanged } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -29,6 +30,7 @@ export class HomeComponent {
   constructor(
     private lojaService: LojaService,
     private pesquisaService: PesquisaService,
+    private router: Router
   ) {}
 
   termoPesquisa = '';
@@ -142,6 +144,19 @@ export class HomeComponent {
     this.totalItens = this.todasLojas.length;
     this.paginaAtual = 0;
     this.atualizarPagina();
+  }
+
+  abrirVitrine(loja: Loja) {
+    switch (loja.nome.toUpperCase()) {
+      case 'VIVAZ':
+        this.router.navigate(['/landing-page-vivaz']);
+        break;
+      case 'TOP BABY':
+        this.router.navigate(['/landing-page-topbaby']);
+        break;
+      default:
+        alert('Esta loja ainda não possui uma vitrine personalizada.');
+    }
   }
 
   abrirMapa(loja: Loja) {
