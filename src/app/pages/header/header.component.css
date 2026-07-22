@@ -14,6 +14,7 @@
     align-items: center;
     gap: 20px;
     padding: 12px 20px;
+    color: white;
 }
 
 .logo {
@@ -34,6 +35,7 @@
 
 .search-container {
     flex: 1;
+    color: white;
 }
 
 .search-container input {
@@ -68,4 +70,15 @@
 
 .admin-link:hover {
     color: #ff6b00;
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.header a:hover {
+    color: #ff7300;
 }

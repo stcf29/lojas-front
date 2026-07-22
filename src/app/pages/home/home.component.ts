@@ -147,6 +147,7 @@ export class HomeComponent {
   }
 
   abrirVitrine(loja: Loja) {
+    console.log(loja)
     switch (loja.nome.toUpperCase()) {
       case 'VIVAZ':
         this.router.navigate(['/landing-page-vivaz']);
