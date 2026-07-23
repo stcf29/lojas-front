@@ -153,7 +153,7 @@ export class HomeComponent {
         this.router.navigate(['/landing-page-vivaz']);
         break;
       case 'TOP BABY':
-        this.router.navigate(['/landing-page-topbaby']);
+        this.router.navigate(['/lp-topbaby']);
         break;
       default:
         alert('Esta loja ainda não possui uma vitrine personalizada.');
