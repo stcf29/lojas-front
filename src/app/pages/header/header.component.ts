@@ -31,7 +31,6 @@ export class HeaderComponent {
   }
 
   buscar() {
-    console.log('texto digitado', this.search);
     this.pesquisaService.pesquisar(this.search);
   }
 }

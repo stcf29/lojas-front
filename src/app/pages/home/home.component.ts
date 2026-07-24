@@ -100,7 +100,6 @@ export class HomeComponent {
   pesquisar(texto: string) {
     this.lojaService.pesquisar(texto).subscribe({
       next: (resultado) => {
-        console.log(resultado);
         this.resultadoOriginal = resultado;
         this.aplicarFiltros();
       },
@@ -149,7 +148,6 @@ export class HomeComponent {
   }
 
   abrirVitrine(loja: Loja) {
-    console.log(loja)
     switch (loja.nome.toUpperCase()) {
       case 'VIVAZ':
         this.router.navigate(['/landing-page-vivaz']);
