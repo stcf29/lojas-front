@@ -56,6 +56,8 @@ export class HomeComponent {
     { valor: 'COSMETICOS', descricao: 'Cosméticos' },
     { valor: 'UTILIDADES', descricao: 'Utilidades' },
     { valor: 'ALIMENTACAO', descricao: 'Alimentação' },
+    { valor: 'CASA', descricao: 'Casa e Decoração' },
+    { valor: 'CONSTRUCAO', descricao: 'Construção' },
   ];
 
   ngOnInit() {
