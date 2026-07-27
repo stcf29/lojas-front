@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://verocentro.com.br/api'
+  apiUrl: 'https://lojas-belem-api.onrender.com'
 };
