@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CarrosselComponent } from '../../components/carrossel/carrossel.component';
 import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from '@angular/material/button';
@@ -21,7 +21,7 @@ import { Router } from '@angular/router';
     MatButtonModule,
     MatIconModule,
     MatPaginatorModule,
-    CommonModule
+    CommonModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
@@ -30,7 +30,7 @@ export class HomeComponent {
   constructor(
     private lojaService: LojaService,
     private pesquisaService: PesquisaService,
-    private router: Router
+    private router: Router,
   ) {}
 
   termoPesquisa = '';
@@ -42,6 +42,8 @@ export class HomeComponent {
   totalItens = 0;
   vitrines: Loja[] = [];
   resultadoOriginal: Loja[] = [];
+  segmentosExpandidos = false;
+  isMobile = window.innerWidth <= 768;
 
   categorias = [
     { valor: '', descricao: 'Todas' },
@@ -61,6 +63,9 @@ export class HomeComponent {
   ];
 
   ngOnInit() {
+    this.isMobile = window.innerWidth <= 768;
+    this.segmentosExpandidos = !this.isMobile;
+
     this.pesquisaService.pesquisa$
       .pipe(distinctUntilChanged())
       .subscribe((texto) => {
@@ -81,6 +86,13 @@ export class HomeComponent {
       this.resultadoOriginal = lojas;
       this.aplicarRegraInicial();
     });
+  }
+
+  toggleSegmentos(): void {
+    if (!this.isMobile) {
+      return;
+    }
+    this.segmentosExpandidos = !this.segmentosExpandidos;
   }
 
   private aplicarRegraInicial() {
@@ -123,6 +135,9 @@ export class HomeComponent {
   selecionarCategoria(categoria: string) {
     this.categoriaSelecionada = categoria;
     this.aplicarFiltros();
+     if(this.isMobile){
+        this.segmentosExpandidos = false;
+    }
   }
 
   aplicarFiltros() {
@@ -161,8 +176,14 @@ export class HomeComponent {
   }
 
   abrirMapa(loja: Loja) {
-    const partes = [loja.nome, loja.endereco, loja.numero, loja.bairro, 'Belém', 'PA',]
-    .filter((parte) => parte && parte.trim() !== '');
+    const partes = [
+      loja.nome,
+      loja.endereco,
+      loja.numero,
+      loja.bairro,
+      'Belém',
+      'PA',
+    ].filter((parte) => parte && parte.trim() !== '');
 
     const endereco = partes.join(', ');
     const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(endereco)}`;
@@ -172,18 +193,27 @@ export class HomeComponent {
   abrirWhatsapp(loja: Loja) {
     if (!loja.whatsapp) return;
     const numero = loja.whatsapp.replace(/\D/g, '');
-    const mensagem =`Olá! Encontrei a loja ${loja.nome} no VeroCentro e gostaria de obter mais informações.`;
-    const url =`https://wa.me/55${numero}?text=${encodeURIComponent(mensagem)}`;
+    const mensagem = `Olá! Encontrei a loja ${loja.nome} no VeroCentro e gostaria de obter mais informações.`;
+    const url = `https://wa.me/55${numero}?text=${encodeURIComponent(mensagem)}`;
     window.open(url, '_blank');
   }
 
   imagensLojas: { [nome: string]: string } = {
-    'VIVAZ': 'vivaz.png',
+    VIVAZ: 'vivaz.png',
     'Top Baby': 'topbaby.jpg',
   };
 
   getImagem(loja: Loja): string {
     const imagem = this.imagensLojas[loja.nome];
-    return imagem ?? 'sem-imagem.png'
+    return imagem ?? 'sem-imagem.png';
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    this.isMobile = window.innerWidth <= 768;
+
+    if (!this.isMobile) {
+      this.segmentosExpandidos = true;
+    }
   }
 }

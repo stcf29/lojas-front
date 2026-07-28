@@ -1,6 +1,18 @@
 <div class="home-layout">
-    <aside class="categorias-card">
+<aside class="categorias-card">
+    <div
+        class="categorias-header"
+        (click)="toggleSegmentos()">
         <h3>Segmentos</h3>
+        @if(isMobile){
+            <span class="seta">
+                {{ segmentosExpandidos ? '▲' : '▼' }}
+            </span>
+        }
+    </div>
+    <div
+        class="categorias-body"
+        [class.aberto]="segmentosExpandidos || !isMobile">
         @for (categoria of categorias; track categoria.valor) {
             <button
                 class="categoria-btn"
@@ -9,12 +21,13 @@
                 {{ categoria.descricao }}
             </button>
         }
-    </aside>
+    </div>
+</aside>
 
     <div class="conteudo-home">
         <app-carrossel></app-carrossel>
         <section class="vitrine">
-            <h2>Vitrines em destaque</h2>
+            <h2>Vitrines em Destaque</h2>
             <div class="cards">
                 @for (loja of vitrines; track loja.id) {
                     <div class="card-loja">
