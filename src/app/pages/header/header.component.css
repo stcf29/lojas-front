@@ -59,15 +59,6 @@
     border-color: #ff6b00;
 }
 
-.admin-link {
-    color: rgba(255,255,255,.75);
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
-    white-space: nowrap;
-    transition: .2s;
-}
-
 .admin-link:hover {
     color: #ff6b00;
 }
@@ -82,3 +73,32 @@
 .header a:hover {
     color: #ff7300;
 }
+
+@media (max-width: 768px) {
+  .logo {
+    width: auto;
+    font-size: 15px;
+  }
+
+    .container{
+      gap:8px;
+      padding:10px 12px;
+  }
+
+    .search-container{
+      flex:1;
+      min-width:0;
+  }
+
+  .search-container input{
+      height:36px;
+      font-size:14px;
+      padding:0 14px;
+  }
+
+    .header a{
+      font-size:14px;
+      white-space:nowrap;
+  }
+}
+
