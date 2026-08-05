@@ -38,7 +38,7 @@ export class HomeComponent {
   todasLojas: Loja[] = [];
   lojas: Loja[] = [];
   paginaAtual = 0;
-  itensPorPagina = 5;
+  itensPorPagina = 10;
   totalItens = 0;
   vitrines: Loja[] = [];
   resultadoOriginal: Loja[] = [];

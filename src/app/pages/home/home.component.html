@@ -27,7 +27,7 @@
     <div class="conteudo-home">
         <app-carrossel></app-carrossel>
         <section class="vitrine">
-            <h2>Vitrines em Destaque</h2>
+            <h2>Vitrines em Destaque:</h2>
             <div class="cards">
                 @for (loja of vitrines; track loja.id) {
                     <div class="card-loja">
@@ -62,7 +62,7 @@
         </section>
 
         <section class="lista">
-            <h2>Lista de Lojas</h2>
+            <h2>Lista de Lojas:</h2>
             @for (loja of lojas; track loja.id) {
                 <div class="item-lista">
                     <div>
@@ -80,6 +80,9 @@
                         </span>
                     </div>
                     <button class="btn-rota-lista" (click)="abrirMapa(loja)"><i class="fa-solid fa-location-dot"></i> Como chegar</button>
+                    @if (loja.plano === 'BASICO') {
+                          <button class="btn-zap-lista" (click)="abrirWhatsapp(loja)"><i class="fa-brands fa-whatsapp"></i>Whatsapp</button>
+                      }
                 </div>
             }
         </section>
