@@ -194,6 +194,12 @@
   color: #666;
 }
 
+.acoes-loja {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 .home-container {
   max-width: 1000px;
   margin: 0 auto;

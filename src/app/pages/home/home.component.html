@@ -79,10 +79,19 @@
                             {{ loja.bairro }}
                         </span>
                     </div>
-                    <button class="btn-rota-lista" (click)="abrirMapa(loja)"><i class="fa-solid fa-location-dot"></i> Como chegar</button>
-                    @if (loja.plano === 'BASICO') {
-                          <button class="btn-zap-lista" (click)="abrirWhatsapp(loja)"><i class="fa-brands fa-whatsapp"></i>Whatsapp</button>
-                      }
+                    <div class="acoes-loja">
+                                        @if (loja.plano === 'BASICO') {
+                        <button class="btn-zap-lista" (click)="abrirWhatsapp(loja)">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            Whatsapp
+                        </button>
+                    }
+
+                    <button class="btn-rota-lista" (click)="abrirMapa(loja)">
+                        <i class="fa-solid fa-location-dot"></i>
+                        Como chegar
+                    </button>
+                    </div>
                 </div>
             }
         </section>
