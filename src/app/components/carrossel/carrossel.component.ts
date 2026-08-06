@@ -12,9 +12,8 @@ import { CarouselModule } from 'primeng/carousel';
 export class CarrosselComponent {
 
   readonly banners = [
-  { imagem: 'banner1.jpg' },
-  { imagem: 'banner2.jpg' },
-  { imagem: 'banner3.jpg' }
+  { imagem: 'banner_topbaby.png' },
+  { imagem: 'banner_vivaz.png' },
 ];
 
 constructor() {
