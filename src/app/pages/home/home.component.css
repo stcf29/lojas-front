@@ -73,15 +73,10 @@
   background: white;
   border-radius: 16px;
   overflow: hidden;
-}
-
-.card-loja {
-  background: white;
-  border-radius: 16px;
-  overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, .12);
   transition: .25s;
 }
+
 
 .card-loja:hover {
   transform: translateY(-6px);
@@ -115,7 +110,7 @@
 .acoes {
   display: flex;
   gap: 8px;
-  margin-top: auto;
+  margin-top: 5px;
   flex-wrap: wrap;
 }
 
@@ -170,7 +165,7 @@
   margin-top: 50px;
 }
 
-.lista h2{
+.lista h2 {
   color: #0B2B74;
 }
 
@@ -195,9 +190,9 @@
 }
 
 .acoes-loja {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .home-container {
@@ -323,7 +318,8 @@
 
   .categorias-header {
     padding: 12px 18px;
-    min-height: 48px;;
+    min-height: 48px;
+    ;
   }
 
   .categorias-card {
@@ -341,6 +337,32 @@
   .categorias-body.aberto {
     max-height: 900px;
   }
+
+  .card-loja {
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .12);
+  }
+
+  .card-loja img {
+    height: 120px;
+  }
+
+  .card-body {
+    padding: 8px;
+  }
+
+  .acoes {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+  }
+
+  .acoes button {
+    flex: 1;
+    font-size: 11px;
+    padding: 6px;
+  }
+
 
 }
 
